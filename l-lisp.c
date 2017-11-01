@@ -893,8 +893,8 @@ int main(int argc, char** argv) {
   /* Interactive Prompt */
   if (argc == 1) {
   
-    puts("Learner's Lisp\n");
-    puts("Press Ctrl+C to exit\n");
+    puts("Learner's Lisp");
+    puts("Press Ctrl+C to exit");
 
     while (1) {
     
