@@ -42,8 +42,8 @@
 (fun {min & xs} {
   if (== (tail xs) nil) {first xs} {
     do
-      (= {rest} (unpack min (tail xs)))
-      (= {item} (first xs))
+      (set {rest} (unpack min (tail xs)))
+      (set {item} (first xs))
       (if (< item rest) {item} {rest})
   }
 })
@@ -52,8 +52,8 @@
 (fun {max & xs} {
   if (== (tail xs) nil) {first xs} {
     do
-      (= {rest} (unpack max (tail xs)))
-      (= {item} (first xs))
+      (set {rest} (unpack max (tail xs)))
+      (set {item} (first xs))
       (if (> item rest) {item} {rest})
   }
 })
@@ -209,8 +209,8 @@
   if (== xs nil)
     {error "No element found"}
     {do
-      {= {key} {first (first l)}}
-      {= {val} {second (first l)}}
+      {set {key} {first (first l)}}
+      {set {val} {second (first l)}}
       (if (== x key) {val} {lookup x (tail xs)})
     }
   })
@@ -229,8 +229,8 @@
   if (== xs nil)
     {{nil nil}}
     {do
-      (= {x} (first xs))
-      (= {y} (unzip (tail xs)))
+      (set {x} (first xs))
+      (set {y} (unzip (tail xs)))
       (list (join (head x) (first y)) (join (tail x) (second y)))
     }
   })
