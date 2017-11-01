@@ -685,7 +685,7 @@ void lenv_add_builtins(lenv* e) {
   /* Variable Functions */
   lenv_add_builtin(e, "lambda",  builtin_lambda); 
   lenv_add_builtin(e, "def", builtin_def);
-  lenv_add_builtin(e, "=",   builtin_put);
+  lenv_add_builtin(e, "set",   builtin_put);
   
   /* List Functions */
   lenv_add_builtin(e, "list", builtin_list);
@@ -893,11 +893,12 @@ int main(int argc, char** argv) {
   /* Interactive Prompt */
   if (argc == 1) {
   
-    puts("SCLI Version 0.4-alpha");
+    puts("Learner's Lisp\n");
+    puts("Press Ctrl+C to exit\n");
 
     while (1) {
     
-      char* input = readline("scli v0.4-alpha > ");
+      char* input = readline("l-lisp > ");
       add_history(input);
       
       mpc_result_t r;
