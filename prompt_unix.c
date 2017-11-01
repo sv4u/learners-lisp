@@ -6,14 +6,14 @@
 int main(int argc, char** argv) {
    
   /* Print Version and Exit Information */
-  puts("SCLI Version 0.4-alpha");
+  puts("Learner's Lisp\n");
   puts("Press Ctrl+C to Exit\n");
    
   /* In a never ending loop */
   while (1) {
     
     /* Output our prompt and get input */
-    char* input = readline("scli v0.4-alpha > ");
+    char* input = readline("l-lisp > ");
     
     /* Add input to history */
     add_history(input);
