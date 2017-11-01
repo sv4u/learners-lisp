@@ -209,8 +209,8 @@
   if (== xs nil)
     {error "No element found"}
     {do
-      {set {key} {first (first l)}}
-      {set {val} {second (first l)}}
+      {set {key} {first (first xs)}}
+      {set {val} {second (first xs)}}
       (if (== x key) {val} {lookup x (tail xs)})
     }
   })
