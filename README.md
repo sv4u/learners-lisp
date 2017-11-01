@@ -18,9 +18,9 @@ Learner's Lisp is a LISP language meant to help introduce people to functional p
 ### Core Library
 
 * Basic atoms
-* * nil: Empty list
-* * true: 1
-* * false: 0
+  * nil: Empty list
+  * true: 1
+  * false: 0
 * fun: Function definition
 * let: Open a new scope
 * unpack: Unpack a list to a function
