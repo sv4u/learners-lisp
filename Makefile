@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -std=c99 -Wall -g
 LFLAGS = 
-FILES = scli
+FILES = l-lisp
 PLATFORM = $(shell uname)
 
 ifeq ($(findstring Linux,$(PLATFORM)),Linux)
