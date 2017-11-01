@@ -28,7 +28,7 @@ mpc_parser_t* Comment;
 mpc_parser_t* Sexpr;  
 mpc_parser_t* Qexpr;  
 mpc_parser_t* Expr; 
-mpc_parser_t* Scli;
+mpc_parser_t* Llisp;
 
 /* Forward Declarations */
 
@@ -612,7 +612,7 @@ lval* builtin_load(lenv* e, lval* a) {
   
   /* Parse File given by string name */
   mpc_result_t r;
-  if (mpc_parse_contents(a->cell[0]->str, Scli, &r)) {
+  if (mpc_parse_contents(a->cell[0]->str, Llisp, &r)) {
     
     /* Read contents */
     lval* expr = lval_read(r.output);
@@ -871,7 +871,7 @@ int main(int argc, char** argv) {
   Sexpr   = mpc_new("sexpr");
   Qexpr   = mpc_new("qexpr");
   Expr    = mpc_new("expr");
-  Scli    = mpc_new("scli");
+  Llisp    = mpc_new("llisp");
   
   mpca_lang(MPCA_LANG_DEFAULT,
     "                                              \
@@ -883,9 +883,9 @@ int main(int argc, char** argv) {
       qexpr   : '{' <expr>* '}' ;                  \
       expr    : <number>  | <symbol> | <string>    \
               | <comment> | <sexpr>  | <qexpr>;    \
-      scli    : /^/ <expr>* /$/ ;                  \
+      llisp    : /^/ <expr>* /$/ ;                  \
     ",
-    Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Scli);
+    Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Llisp);
   
   lenv* e = lenv_new();
   lenv_add_builtins(e);
@@ -902,7 +902,7 @@ int main(int argc, char** argv) {
       add_history(input);
       
       mpc_result_t r;
-      if (mpc_parse("<stdin>", input, Scli, &r)) {
+      if (mpc_parse("<stdin>", input, Llisp, &r)) {
         
         lval* x = lval_eval(e, lval_read(r.output));
         lval_println(x);
@@ -941,7 +941,7 @@ int main(int argc, char** argv) {
   
   mpc_cleanup(8, 
     Number, Symbol, String, Comment, 
-    Sexpr,  Qexpr,  Expr,   Scli);
+    Sexpr,  Qexpr,  Expr,   Llisp);
   
   return 0;
 }
