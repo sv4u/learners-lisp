@@ -4,13 +4,19 @@
 (def {false} 0)
 
 ;;; Function Definitions
-(def {fun} (lambda {f b} {def (head f) (lambda (tail f) b)}))
+(def {fun} (lambda {f b} {
+  def (head f) (lambda (tail f) b)
+}))
 
 ;;; Example function definition
-(fun {let b} {((lambda {_} b) ())})
+(fun {let b} {
+  ((lambda {_} b) ())
+})
 
 ;;; Unpack list to function
-(fun {unpack f l} {eval (join (list f) l)})
+(fun {unpack f l} {
+  eval (join (list f) l)
+})
 
 ;;; Unapply list to function
 (fun {pack f & xs} {f xs})
@@ -21,7 +27,11 @@
 
 
 ;;; Perform several operations in a sequence (sml let)
-(def {do & l} { if (== l nil) {nil} {last l} })
+(fun {do & l} {
+  if (== l nil)
+    {nil}
+    {last l}
+})
 
 ;;; Logical Functions
 (fun {not x}   {- 1 x})
@@ -35,8 +45,8 @@
       (= {rest} (unpack min (tail xs)))
       (= {item} (first xs))
       (if (< item rest) {item} {rest})
-    }
-  })
+  }
+})
 
 ;;; Maximum of arguments
 (fun {max & xs} {
@@ -45,21 +55,27 @@
       (= {rest} (unpack max (tail xs)))
       (= {item} (first xs))
       (if (> item rest) {item} {rest})
-    }
-  })
+  }
+})
 
 ;;; Conditional functions
 (fun {select & cs} {
   if (== cs nil)
     {error "No selection found"}
-    {if (first (first cs)) {second (first cs)} {unpack select (tail cs)}}
-  })
+    {if (first (first cs))
+      {second (first cs)}
+      {unpack select (tail cs)}
+    }
+})
 
 (fun {case & cs} {
   if (== cs nil)
     {error "No case found"}
-    {if (== x (first (first cs))) {second (first cs)} {unpack case (join (list x) (tail cs))}}
-  })
+    {if (== x (first (first cs)))
+      {second (first cs)}
+      {unpack case (join (list x) (tail cs))}
+    }
+})
 
 (def {otherwise} true)
 
