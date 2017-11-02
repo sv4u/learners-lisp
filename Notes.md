@@ -7,4 +7,4 @@
 | Symbol | Characters |
 | S Expression | (expr) |
 | Q Expression | {expr} |
-| Expression | <number> or <symbol> or <s expr> or <q expr> |
+| Expression | number or symbol or s expr or q expr |
